@@ -366,6 +366,42 @@
   .mobile-menu.open { display: flex; }
   .mobile-menu a { font-size: 1.3rem; font-family: 'Syne', sans-serif; color: var(--text); text-decoration: none; font-weight: 600; }
   .mobile-menu a:hover { color: var(--accent2); }
+
+  /* ── LANG TOGGLE ─────────────────────────────────────── */
+  .lang-toggle {
+    display: flex; align-items: center; gap: 2px;
+    background: rgba(255,255,255,.05); border: 1px solid var(--border);
+    border-radius: 50px; padding: 4px; margin-left: 8px; flex-shrink: 0;
+  }
+  .lang-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--muted); font-size: .75rem; font-weight: 700;
+    padding: 4px 11px; border-radius: 50px;
+    transition: all .2s; letter-spacing: .05em; font-family: 'Syne', sans-serif;
+  }
+  .lang-btn.active { background: var(--accent-g); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--white); }
+
+  .mobile-lang-toggle {
+    display: flex; gap: 12px; margin-top: 8px;
+  }
+  .mobile-lang-btn {
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--muted); font-size: 1rem; font-family: 'Syne', sans-serif;
+    font-weight: 700; padding: 8px 24px; border-radius: 50px; cursor: pointer;
+    transition: all .2s;
+  }
+  .mobile-lang-btn.active { background: var(--accent-g); color: #fff; border-color: transparent; }
+
+  /* ── WHATSAPP BTN ─────────────────────────────────────── */
+  .btn-whatsapp {
+    background: #22c55e; color: #fff;
+    padding: 13px 28px; border-radius: 50px;
+    text-decoration: none; font-weight: 500; font-size: .9rem;
+    transition: transform .2s, opacity .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-whatsapp:hover { transform: translateY(-2px); opacity: .9; }
 </style>
 </head>
 <body>
@@ -380,7 +416,11 @@
       <li><a href="#projects">Projetos</a></li>
       <li><a href="#about">Sobre</a></li>
     </ul>
-    <a href="mailto:guilhermecardoso.info@gmail.com" class="nav-cta">Contato →</a>
+    <a href="mailto:guilhermecardoso.info@gmail.com" class="nav-cta" data-i18n="nav.cta">Contato →</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('pt')" id="btn-pt">PT</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -393,7 +433,11 @@
   <a href="#experience" onclick="toggleMenu()">Experiência</a>
   <a href="#projects" onclick="toggleMenu()">Projetos</a>
   <a href="#about" onclick="toggleMenu()">Sobre</a>
-  <a href="mailto:guilhermecardoso.info@gmail.com" onclick="toggleMenu()">Contato</a>
+  <a href="mailto:guilhermecardoso.info@gmail.com" onclick="toggleMenu()" data-i18n="nav.contact">Contato</a>
+  <div class="mobile-lang-toggle">
+    <button class="mobile-lang-btn active" onclick="setLang('pt'); toggleMenu()" id="mbtn-pt">PT</button>
+    <button class="mobile-lang-btn" onclick="setLang('en'); toggleMenu()" id="mbtn-en">EN</button>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -404,22 +448,22 @@
       <div>
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          Disponível para oportunidades remotas
+          <span data-i18n="hero.badge">Disponível para oportunidades remotas</span>
         </div>
         <h1 class="hero-name">
           Luis Guilherme<br>
           <span class="highlight">Cardoso Rosa</span>
         </h1>
-        <p class="hero-title">Senior Frontend Engineer · Tech Lead · Full Stack</p>
-        <p class="hero-desc">
-          Profissional com mais de 10 anos construindo aplicações web de alto impacto,
-          liderando times de engenharia e entregando arquiteturas escaláveis para
-          startups e produtos de alto crescimento.
-        </p>
+        <p class="hero-title" data-i18n="hero.title">Senior Frontend Engineer · Tech Lead · Full Stack</p>
+        <p class="hero-desc" data-i18n="hero.desc">Profissional com mais de 10 anos construindo aplicações web de alto impacto, liderando times de engenharia e entregando arquiteturas escaláveis para startups e produtos de alto crescimento.</p>
         <div class="hero-actions">
           <a href="mailto:guilhermecardoso.info@gmail.com" class="btn-primary">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Entre em contato
+            <span data-i18n="hero.cta">Entre em contato</span>
+          </a>
+          <a href="https://wa.me/5541987924760" target="_blank" class="btn-whatsapp">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-i18n="hero.whatsapp">WhatsApp</span>
           </a>
           <a href="https://linkedin.com/in/lguilhermecardoso" target="_blank" class="btn-secondary">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -429,15 +473,15 @@
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-num">10+</div>
-            <div class="stat-label">Anos de experiência</div>
+            <div class="stat-label" data-i18n="hero.stat1">Anos de experiência</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">7+</div>
-            <div class="stat-label">Empresas & produtos</div>
+            <div class="stat-label" data-i18n="hero.stat2">Empresas & produtos</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">15+</div>
-            <div class="stat-label">Tecnologias dominadas</div>
+            <div class="stat-label" data-i18n="hero.stat3">Tecnologias dominadas</div>
           </div>
         </div>
       </div>
@@ -784,6 +828,50 @@
     document.querySelector('nav').style.background =
       window.scrollY > 40 ? 'rgba(8,9,12,0.95)' : 'rgba(8,9,12,0.7)';
   });
+
+  // i18n
+  const translations = {
+    pt: {
+      'nav.cta': 'Contato →',
+      'nav.contact': 'Contato',
+      'hero.badge': 'Disponível para oportunidades remotas',
+      'hero.title': 'Senior Frontend Engineer · Tech Lead · Full Stack',
+      'hero.desc': 'Profissional com mais de 10 anos construindo aplicações web de alto impacto, liderando times de engenharia e entregando arquiteturas escaláveis para startups e produtos de alto crescimento.',
+      'hero.cta': 'Entre em contato',
+      'hero.whatsapp': 'WhatsApp',
+      'hero.stat1': 'Anos de experiência',
+      'hero.stat2': 'Empresas & produtos',
+      'hero.stat3': 'Tecnologias dominadas',
+    },
+    en: {
+      'nav.cta': 'Contact →',
+      'nav.contact': 'Contact',
+      'hero.badge': 'Available for remote opportunities',
+      'hero.title': 'Senior Frontend Engineer · Tech Lead · Full Stack',
+      'hero.desc': 'Professional with 10+ years building high-impact web applications, leading engineering teams and delivering scalable architectures for startups and high-growth products.',
+      'hero.cta': 'Get in touch',
+      'hero.whatsapp': 'WhatsApp',
+      'hero.stat1': 'Years of experience',
+      'hero.stat2': 'Companies & products',
+      'hero.stat3': 'Technologies mastered',
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+    });
+    ['btn-pt', 'btn-en'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('active', id === 'btn-' + lang);
+    });
+    ['mbtn-pt', 'mbtn-en'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('active', id === 'mbtn-' + lang);
+    });
+  }
 </script>
 </body>
 </html>
