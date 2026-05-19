@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Luis Guilherme Cardoso Rosa — Senior Frontend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:       #08090c;
+    --bg2:      #0f1117;
+    --bg3:      #161820;
+    --border:   rgba(255,255,255,0.07);
+    --accent:   #3b82f6;
+    --accent2:  #60a5fa;
+    --accent-g: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --text:     #f1f3f9;
+    --muted:    #8892a4;
+    --muted2:   #555e72;
+    --white:    #ffffff;
+    --radius:   16px;
+    --radius-sm:10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Noise overlay ─────────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* ── Layout ────────────────────────────────────────── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ── NAV ───────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 0;
+    background: rgba(8,9,12,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all .3s;
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    color: var(--white); text-decoration: none;
+    letter-spacing: -.01em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: .875rem; color: var(--muted); text-decoration: none;
+    transition: color .2s; letter-spacing: .02em;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--accent-g);
+    color: #fff; text-decoration: none;
+    padding: 9px 20px; border-radius: 50px;
+    font-size: .825rem; font-weight: 500;
+    transition: opacity .2s, transform .2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+
+  /* ── HERO ──────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 0 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse at center, rgba(59,130,246,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 340px;
+    gap: 64px; align-items: center; width: 100%;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25);
+    color: var(--accent2); padding: 6px 14px; border-radius: 50px;
+    font-size: .8rem; font-weight: 500; letter-spacing: .04em;
+    margin-bottom: 24px;
+    animation: fadeUp .6s ease both;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -.03em; color: var(--white);
+    margin-bottom: 16px;
+    animation: fadeUp .6s .1s ease both;
+  }
+  .hero-name .highlight {
+    background: var(--accent-g);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-title {
+    font-size: 1.1rem; color: var(--muted);
+    font-weight: 300; margin-bottom: 20px;
+    animation: fadeUp .6s .2s ease both;
+  }
+  .hero-desc {
+    font-size: .975rem; color: var(--muted); line-height: 1.75;
+    max-width: 540px; margin-bottom: 36px;
+    animation: fadeUp .6s .3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    animation: fadeUp .6s .4s ease both;
+  }
+  .btn-primary {
+    background: var(--accent-g); color: #fff;
+    padding: 13px 28px; border-radius: 50px;
+    text-decoration: none; font-weight: 500; font-size: .9rem;
+    transition: transform .2s, opacity .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: .9; }
+  .btn-secondary {
+    border: 1px solid var(--border); color: var(--text);
+    padding: 13px 28px; border-radius: 50px;
+    text-decoration: none; font-size: .9rem;
+    transition: border-color .2s, background .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(59,130,246,.05); }
+
+  /* Avatar */
+  .hero-avatar-wrap { display: flex; justify-content: center; animation: fadeUp .6s .2s ease both; }
+  .hero-avatar {
+    width: 280px; height: 280px; border-radius: 28px;
+    position: relative; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+  }
+  .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .avatar-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: var(--muted2);
+  }
+  .avatar-placeholder svg { opacity: .4; }
+  .avatar-placeholder p { font-size: .8rem; text-align: center; line-height: 1.5; opacity: .6; }
+  .avatar-ring {
+    position: absolute; inset: -1px; border-radius: 29px;
+    background: var(--accent-g); z-index: -1; opacity: .3;
+  }
+
+  /* Stats strip */
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px; padding-top: 36px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp .6s .5s ease both;
+  }
+  .stat-item { text-align: left; }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700;
+    background: var(--accent-g); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1;
+  }
+  .stat-label { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+
+  /* ── SKILLS ────────────────────────────────────────── */
+  section { padding: 96px 0; }
+  .section-tag {
+    font-size: .75rem; font-weight: 600; letter-spacing: .1em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; color: var(--white);
+    letter-spacing: -.025em; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--muted); font-size: .975rem; max-width: 520px; line-height: 1.7; }
+
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px; margin-top: 48px;
+  }
+  .skill-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+    transition: border-color .25s, transform .25s, background .25s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent-g); opacity: 0; transition: opacity .25s;
+  }
+  .skill-card:hover { border-color: rgba(59,130,246,.3); transform: translateY(-3px); background: var(--bg3); }
+  .skill-card:hover::before { opacity: 1; }
+  .skill-icon { font-size: 1.5rem; margin-bottom: 12px; }
+  .skill-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: rgba(255,255,255,.05); border: 1px solid var(--border);
+    color: var(--muted); font-size: .75rem; padding: 3px 10px; border-radius: 50px;
+  }
+
+  /* ── EXPERIENCE ────────────────────────────────────── */
+  #experience { background: var(--bg2); }
+  .exp-timeline { margin-top: 52px; position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-item {
+    padding-left: 32px; padding-bottom: 48px; position: relative;
+  }
+  .exp-item:last-child { padding-bottom: 0; }
+  .exp-dot {
+    position: absolute; left: -5px; top: 6px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg2);
+    box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+  }
+  .exp-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .exp-role { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--white); }
+  .exp-company { color: var(--accent2); font-size: .875rem; font-weight: 500; margin-bottom: 4px; }
+  .exp-date {
+    background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.2);
+    color: var(--accent2); font-size: .75rem; padding: 3px 12px;
+    border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+  }
+  .exp-bullets { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
+  .exp-bullets li {
+    font-size: .9rem; color: var(--muted); line-height: 1.6;
+    padding-left: 16px; position: relative;
+  }
+  .exp-bullets li::before {
+    content: ''; position: absolute; left: 0; top: 10px;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--accent); opacity: .6;
+  }
+  .exp-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .stack-tag {
+    background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.15);
+    color: var(--accent2); font-size: .72rem; padding: 3px 10px; border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* ── PROJECTS ──────────────────────────────────────── */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-top: 48px; }
+  .project-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    transition: border-color .25s, transform .25s;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .project-card:hover { border-color: rgba(59,130,246,.3); transform: translateY(-3px); }
+  .project-icon { font-size: 1.8rem; }
+  .project-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); }
+  .project-desc { font-size: .875rem; color: var(--muted); line-height: 1.65; flex: 1; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* ── ABOUT ─────────────────────────────────────────── */
+  #about { background: var(--bg2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 52px; }
+  .about-text p { font-size: .975rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-highlights { display: flex; flex-direction: column; gap: 16px; }
+  .highlight-item {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .highlight-emoji { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .highlight-title { font-size: .875rem; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+  .highlight-desc { font-size: .825rem; color: var(--muted); line-height: 1.55; }
+
+  /* ── CONTACT ───────────────────────────────────────── */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+  }
+  .contact-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 24px; padding: 64px 48px; max-width: 700px;
+    margin: 0 auto; position: relative; overflow: hidden;
+  }
+  .contact-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top, rgba(59,130,246,.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .contact-card .section-title { margin-bottom: 12px; }
+  .contact-card .section-sub { margin: 0 auto 36px; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg3); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    padding: 11px 20px; border-radius: 50px; font-size: .875rem;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent2); background: rgba(59,130,246,.05); }
+  .contact-link svg { flex-shrink: 0; }
+
+  /* ── FOOTER ────────────────────────────────────────── */
+  footer {
+    padding: 28px 0; border-top: 1px solid var(--border);
+    text-align: center; font-size: .8rem; color: var(--muted2);
+  }
+
+  /* ── ANIMATIONS ────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-avatar-wrap { order: -1; }
+    .hero-avatar { width: 180px; height: 180px; border-radius: 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .contact-card { padding: 40px 24px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Mobile nav */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 99;
+    background: var(--bg); padding: 100px 24px 40px;
+    flex-direction: column; gap: 24px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 1.3rem; font-family: 'Syne', sans-serif; color: var(--text); text-decoration: none; font-weight: 600; }
+  .mobile-menu a:hover { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="nav-logo">LG<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experiência</a></li>
+      <li><a href="#projects">Projetos</a></li>
+      <li><a href="#about">Sobre</a></li>
+    </ul>
+    <a href="mailto:guilhermecardoso.info@gmail.com" class="nav-cta">Contato →</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#skills" onclick="toggleMenu()">Skills</a>
+  <a href="#experience" onclick="toggleMenu()">Experiência</a>
+  <a href="#projects" onclick="toggleMenu()">Projetos</a>
+  <a href="#about" onclick="toggleMenu()">Sobre</a>
+  <a href="mailto:guilhermecardoso.info@gmail.com" onclick="toggleMenu()">Contato</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Disponível para oportunidades remotas
+        </div>
+        <h1 class="hero-name">
+          Luis Guilherme<br>
+          <span class="highlight">Cardoso Rosa</span>
+        </h1>
+        <p class="hero-title">Senior Frontend Engineer · Tech Lead · Full Stack</p>
+        <p class="hero-desc">
+          Profissional com mais de 10 anos construindo aplicações web de alto impacto,
+          liderando times de engenharia e entregando arquiteturas escaláveis para
+          startups e produtos de alto crescimento.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:guilhermecardoso.info@gmail.com" class="btn-primary">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Entre em contato
+          </a>
+          <a href="https://linkedin.com/in/lguilhermecardoso" target="_blank" class="btn-secondary">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Anos de experiência</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">7+</div>
+            <div class="stat-label">Empresas & produtos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Tecnologias dominadas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-avatar-wrap">
+        <div class="hero-avatar">
+          <img src="https://github.com/lguilhermecardoso.png" alt="Luis Guilherme Cardoso Rosa"/>
+          <div class="avatar-ring"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-tag reveal">Expertise técnica</p>
+    <h2 class="section-title reveal">Stack & Competências</h2>
+    <p class="section-sub reveal">Ecossistema completo — do frontend à arquitetura de sistemas, mobile e backend.</p>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚛️</div>
+        <div class="skill-name">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag">React.js</span><span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span><span class="tag">Angular</span>
+          <span class="tag">Tailwind CSS</span><span class="tag">Zustand</span>
+          <span class="tag">React Query</span><span class="tag">Redux</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">🏗️</div>
+        <div class="skill-name">Arquitetura</div>
+        <div class="skill-tags">
+          <span class="tag">Micro-frontends</span><span class="tag">Module Federation</span>
+          <span class="tag">BFF</span><span class="tag">RESTful APIs</span>
+          <span class="tag">GraphQL</span><span class="tag">RabbitMQ</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-name">Backend</div>
+        <div class="skill-tags">
+          <span class="tag">Node.js</span><span class="tag">NestJS</span>
+          <span class="tag">Java 18</span><span class="tag">Spring Boot</span>
+          <span class="tag">PHP / Laravel</span><span class="tag">Ruby on Rails</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">📱</div>
+        <div class="skill-name">Mobile</div>
+        <div class="skill-tags">
+          <span class="tag">React Native</span><span class="tag">Flutter</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">Dados & Ferramentas</div>
+        <div class="skill-tags">
+          <span class="tag">PostgreSQL</span><span class="tag">GitHub</span>
+          <span class="tag">Jira</span><span class="tag">HighchartsJS</span>
+          <span class="tag">Gulp</span><span class="tag">Grunt</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">🎯</div>
+        <div class="skill-name">Liderança</div>
+        <div class="skill-tags">
+          <span class="tag">Tech Lead</span><span class="tag">Code Review</span>
+          <span class="tag">SCRUM</span><span class="tag">Backlog</span>
+          <span class="tag">Mentoria</span><span class="tag">Planejamento</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-tag reveal">Trajetória</p>
+    <h2 class="section-title reveal">Experiência Profissional</h2>
+    <p class="section-sub reveal">10 anos de atuação em startups, scale-ups e produtos digitais de alto crescimento.</p>
+
+    <div class="exp-timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Full Stack Engineer</div>
+            <div class="exp-company">Furk.Tech</div>
+          </div>
+          <span class="exp-date">Mar 2025 – Abr 2026</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Liderança da arquitetura e evolução da aplicação principal</li>
+          <li>Desenvolvimento de serviços backend com ecossistema Java moderno</li>
+          <li>Definição de padrões de codificação, boas práticas e fluxos de code review</li>
+          <li>Gestão de estado assíncrono e cache de APIs</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">React.js</span><span class="stack-tag">Java 18</span>
+          <span class="stack-tag">Spring Boot</span><span class="stack-tag">React Query</span>
+          <span class="stack-tag">Tailwind CSS</span><span class="stack-tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Engineer</div>
+            <div class="exp-company">Orbia</div>
+          </div>
+          <span class="exp-date">Jul 2024 – Mar 2025</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Desenvolvimento e evolução de arquiteturas distribuídas de Micro-frontends</li>
+          <li>Otimização de performance de runtime e camada de APIs</li>
+          <li>Criação de layouts de UI reutilizáveis e modulares</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">Next.js</span><span class="stack-tag">Micro-frontends</span>
+          <span class="stack-tag">Zustand</span><span class="stack-tag">React Query</span>
+          <span class="stack-tag">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Engineer Frontend III</div>
+            <div class="exp-company">Arcotech</div>
+          </div>
+          <span class="exp-date">Abr 2023 – Jan 2024</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Desenvolvimento de aplicações escaláveis e distribuídas</li>
+          <li>Construção de camadas BFF e integração de eventos assíncronos</li>
+          <li>Engenharia de dashboards analíticos para grandes volumes de dados</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">React.js</span><span class="stack-tag">Module Federation</span>
+          <span class="stack-tag">NestJS</span><span class="stack-tag">RabbitMQ</span>
+          <span class="stack-tag">HighchartsJS</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Tech Leader – Frontend & Mobile</div>
+            <div class="exp-company">UEX Tecnologia</div>
+          </div>
+          <span class="exp-date">Abr 2022 – Dez 2023</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Liderança técnica das equipes de frontend e mobile</li>
+          <li>Planejamento estratégico, refinamento de backlog e priorização</li>
+          <li>Implementação de padrões de qualidade e otimizações de codebase</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">React Native</span><span class="stack-tag">Flutter</span>
+          <span class="stack-tag">TypeScript</span><span class="stack-tag">SCRUM</span>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Senior Software Engineer</div>
+            <div class="exp-company">Gympass (Wellhub)</div>
+          </div>
+          <span class="exp-date">Mai 2021 – Mar 2022</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Desenvolvimento de features críticas em escala global</li>
+          <li>Evolução e manutenção do Yoga Design System</li>
+          <li>Condução de entrevistas técnicas para expansão do time</li>
+        </ul>
+        <div class="exp-stack">
+          <span class="stack-tag">ReactJS</span><span class="stack-tag">React Native</span>
+          <span class="stack-tag">TypeScript</span><span class="stack-tag">GraphQL</span>
+          <span class="stack-tag">Styled-components</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-tag reveal">Destaques</p>
+    <h2 class="section-title reveal">Projetos Relevantes</h2>
+    <p class="section-sub reveal">Produtos e sistemas que deixaram marca técnica e de negócio.</p>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-icon">🧘</div>
+        <div class="project-name">Yoga Design System</div>
+        <div class="project-desc">Desenvolvimento e padronização do ecossistema de componentes UI centralizado para multi-região no Gympass, unificando a identidade visual de toda a plataforma.</div>
+        <div class="project-stack">
+          <span class="tag">React</span><span class="tag">Styled-components</span><span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🎮</div>
+        <div class="project-name">Plataforma de Microtransações</div>
+        <div class="project-desc">Layouts Micro-frontend isolados e de alta performance para processamento de pagamentos de alta frequência no Gamers Club.</div>
+        <div class="project-stack">
+          <span class="tag">React.js</span><span class="tag">Module Federation</span><span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">⏱️</div>
+        <div class="project-name">SaaS de Controle de Jornada</div>
+        <div class="project-desc">Liderança técnica da migração completa do frontend legado de produto crítico B2B para stack moderna, na VR.</div>
+        <div class="project-stack">
+          <span class="tag">Angular</span><span class="tag">Ruby on Rails</span><span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-tag reveal">Quem sou</p>
+    <h2 class="section-title reveal">Sobre mim</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Sou um engenheiro de software apaixonado por criar produtos digitais que fazem diferença. Com mais de 10 anos de experiência, já passei por startups, scale-ups e produtos globais — sempre com foco em qualidade técnica e resultado de negócio.</p>
+        <p>Meu diferencial está na combinação entre profundidade técnica e visão de produto. Já atuei como Tech Lead e como mão na massa ao mesmo tempo, o que me dá uma perspectiva completa do ciclo de desenvolvimento.</p>
+        <p>Ambiente ideal para mim: remoto, com autonomia técnica real, times que colaboram genuinamente e cultura de confiança mútua. Mais do que o porte da empresa, o que importa é o impacto.</p>
+        <p style="margin-top:20px">
+          <strong style="color:var(--white)">Idiomas:</strong>
+          <span style="color:var(--muted)"> Português nativo · Inglês avançado (B2)</span>
+        </p>
+      </div>
+      <div class="about-highlights reveal">
+        <div class="highlight-item">
+          <span class="highlight-emoji">🎓</span>
+          <div>
+            <div class="highlight-title">Pós-Grad. Eng. de Software com IA Aplicada</div>
+            <div class="highlight-desc">Anhanguera Educacional · Conclusão 2026</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-emoji">📦</span>
+          <div>
+            <div class="highlight-title">Pós-Grad. Product Management</div>
+            <div class="highlight-desc">Descomplica · 2023</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-emoji">🎨</span>
+          <div>
+            <div class="highlight-title">Pós-Grad. UX | UI</div>
+            <div class="highlight-desc">Faculdade Unyleya · 2020</div>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-emoji">💻</span>
+          <div>
+            <div class="highlight-title">Bacharelado em Sistemas de Informação</div>
+            <div class="highlight-desc">Fafit · 2013</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <p class="section-tag" style="text-align:center">Vamos conversar</p>
+      <h2 class="section-title">Aberto a oportunidades<br>remotas 🚀</h2>
+      <p class="section-sub">Se sua empresa busca um profissional que une profundidade técnica, liderança e visão de produto — entre em contato.</p>
+      <div class="contact-links">
+        <a href="mailto:guilhermecardoso.info@gmail.com" class="contact-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          guilhermecardoso.info@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/lguilhermecardoso" target="_blank" class="contact-link">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="tel:+5541987924760" class="contact-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.15 1.19 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +55 (41) 98792-4760
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 Luis Guilherme Cardoso Rosa · Curitiba, PR · Disponível para trabalho remoto</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Nav scroll opacity
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 40 ? 'rgba(8,9,12,0.95)' : 'rgba(8,9,12,0.7)';
+  });
+</script>
+</body>
+</html>
