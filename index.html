@@ -411,10 +411,10 @@
   <div class="container">
     <a href="#" class="nav-logo">LG<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experiência</a></li>
-      <li><a href="#projects">Projetos</a></li>
-      <li><a href="#about">Sobre</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experiência</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projetos</a></li>
+      <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
     </ul>
     <a href="mailto:guilhermecardoso.info@gmail.com" class="nav-cta" data-i18n="nav.cta">Contato →</a>
     <div class="lang-toggle">
@@ -429,10 +429,10 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#skills" onclick="toggleMenu()">Skills</a>
-  <a href="#experience" onclick="toggleMenu()">Experiência</a>
-  <a href="#projects" onclick="toggleMenu()">Projetos</a>
-  <a href="#about" onclick="toggleMenu()">Sobre</a>
+  <a href="#skills" onclick="toggleMenu()" data-i18n="nav.skills">Skills</a>
+  <a href="#experience" onclick="toggleMenu()" data-i18n="nav.experience">Experiência</a>
+  <a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects">Projetos</a>
+  <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">Sobre</a>
   <a href="mailto:guilhermecardoso.info@gmail.com" onclick="toggleMenu()" data-i18n="nav.contact">Contato</a>
   <div class="mobile-lang-toggle">
     <button class="mobile-lang-btn active" onclick="setLang('pt'); toggleMenu()" id="mbtn-pt">PT</button>
@@ -499,9 +499,9 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <p class="section-tag reveal">Expertise técnica</p>
-    <h2 class="section-title reveal">Stack & Competências</h2>
-    <p class="section-sub reveal">Ecossistema completo — do frontend à arquitetura de sistemas, mobile e backend.</p>
+    <p class="section-tag reveal" data-i18n="skills.tag">Expertise técnica</p>
+    <h2 class="section-title reveal" data-i18n="skills.title">Stack & Competências</h2>
+    <p class="section-sub reveal" data-i18n="skills.sub">Ecossistema completo — do frontend à arquitetura de sistemas, mobile e backend.</p>
     <div class="skills-grid">
 
       <div class="skill-card reveal">
@@ -517,7 +517,7 @@
 
       <div class="skill-card reveal">
         <div class="skill-icon">🏗️</div>
-        <div class="skill-name">Arquitetura</div>
+        <div class="skill-name" data-i18n="skills.arch">Arquitetura</div>
         <div class="skill-tags">
           <span class="tag">Micro-frontends</span><span class="tag">Module Federation</span>
           <span class="tag">BFF</span><span class="tag">RESTful APIs</span>
@@ -545,7 +545,7 @@
 
       <div class="skill-card reveal">
         <div class="skill-icon">🗄️</div>
-        <div class="skill-name">Dados & Ferramentas</div>
+        <div class="skill-name" data-i18n="skills.data">Dados & Ferramentas</div>
         <div class="skill-tags">
           <span class="tag">PostgreSQL</span><span class="tag">GitHub</span>
           <span class="tag">Jira</span><span class="tag">HighchartsJS</span>
@@ -555,11 +555,11 @@
 
       <div class="skill-card reveal">
         <div class="skill-icon">🎯</div>
-        <div class="skill-name">Liderança</div>
+        <div class="skill-name" data-i18n="skills.leadership">Liderança</div>
         <div class="skill-tags">
           <span class="tag">Tech Lead</span><span class="tag">Code Review</span>
           <span class="tag">SCRUM</span><span class="tag">Backlog</span>
-          <span class="tag">Mentoria</span><span class="tag">Planejamento</span>
+          <span class="tag" data-i18n="tag.mentoring">Mentoria</span><span class="tag" data-i18n="tag.planning">Planejamento</span>
         </div>
       </div>
 
@@ -570,9 +570,9 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <p class="section-tag reveal">Trajetória</p>
-    <h2 class="section-title reveal">Experiência Profissional</h2>
-    <p class="section-sub reveal">10 anos de atuação em startups, scale-ups e produtos digitais de alto crescimento.</p>
+    <p class="section-tag reveal" data-i18n="exp.tag">Trajetória</p>
+    <h2 class="section-title reveal" data-i18n="exp.title">Experiência Profissional</h2>
+    <p class="section-sub reveal" data-i18n="exp.sub">10 anos de atuação em startups, scale-ups e produtos digitais de alto crescimento.</p>
 
     <div class="exp-timeline">
 
@@ -583,13 +583,13 @@
             <div class="exp-role">Full Stack Engineer</div>
             <div class="exp-company">Furk.Tech</div>
           </div>
-          <span class="exp-date">Mar 2025 – Abr 2026</span>
+          <span class="exp-date" data-i18n="exp.furk.date">Mar 2025 – Apr 2026</span>
         </div>
         <ul class="exp-bullets">
-          <li>Liderança da arquitetura e evolução da aplicação principal</li>
-          <li>Desenvolvimento de serviços backend com ecossistema Java moderno</li>
-          <li>Definição de padrões de codificação, boas práticas e fluxos de code review</li>
-          <li>Gestão de estado assíncrono e cache de APIs</li>
+          <li data-i18n="exp.furk.b1">Liderança da arquitetura e evolução da aplicação principal</li>
+          <li data-i18n="exp.furk.b2">Desenvolvimento de serviços backend com ecossistema Java moderno</li>
+          <li data-i18n="exp.furk.b3">Definição de padrões de codificação, boas práticas e fluxos de code review</li>
+          <li data-i18n="exp.furk.b4">Gestão de estado assíncrono e cache de APIs</li>
         </ul>
         <div class="exp-stack">
           <span class="stack-tag">React.js</span><span class="stack-tag">Java 18</span>
@@ -608,9 +608,9 @@
           <span class="exp-date">Jul 2024 – Mar 2025</span>
         </div>
         <ul class="exp-bullets">
-          <li>Desenvolvimento e evolução de arquiteturas distribuídas de Micro-frontends</li>
-          <li>Otimização de performance de runtime e camada de APIs</li>
-          <li>Criação de layouts de UI reutilizáveis e modulares</li>
+          <li data-i18n="exp.orbia.b1">Desenvolvimento e evolução de arquiteturas distribuídas de Micro-frontends</li>
+          <li data-i18n="exp.orbia.b2">Otimização de performance de runtime e camada de APIs</li>
+          <li data-i18n="exp.orbia.b3">Criação de layouts de UI reutilizáveis e modulares</li>
         </ul>
         <div class="exp-stack">
           <span class="stack-tag">Next.js</span><span class="stack-tag">Micro-frontends</span>
@@ -626,12 +626,12 @@
             <div class="exp-role">Senior Software Engineer Frontend III</div>
             <div class="exp-company">Arcotech</div>
           </div>
-          <span class="exp-date">Abr 2023 – Jan 2024</span>
+          <span class="exp-date" data-i18n="exp.arco.date">Abr 2023 – Jan 2024</span>
         </div>
         <ul class="exp-bullets">
-          <li>Desenvolvimento de aplicações escaláveis e distribuídas</li>
-          <li>Construção de camadas BFF e integração de eventos assíncronos</li>
-          <li>Engenharia de dashboards analíticos para grandes volumes de dados</li>
+          <li data-i18n="exp.arco.b1">Desenvolvimento de aplicações escaláveis e distribuídas</li>
+          <li data-i18n="exp.arco.b2">Construção de camadas BFF e integração de eventos assíncronos</li>
+          <li data-i18n="exp.arco.b3">Engenharia de dashboards analíticos para grandes volumes de dados</li>
         </ul>
         <div class="exp-stack">
           <span class="stack-tag">React.js</span><span class="stack-tag">Module Federation</span>
@@ -647,12 +647,12 @@
             <div class="exp-role">Tech Leader – Frontend & Mobile</div>
             <div class="exp-company">UEX Tecnologia</div>
           </div>
-          <span class="exp-date">Abr 2022 – Dez 2023</span>
+          <span class="exp-date" data-i18n="exp.uex.date">Abr 2022 – Dez 2023</span>
         </div>
         <ul class="exp-bullets">
-          <li>Liderança técnica das equipes de frontend e mobile</li>
-          <li>Planejamento estratégico, refinamento de backlog e priorização</li>
-          <li>Implementação de padrões de qualidade e otimizações de codebase</li>
+          <li data-i18n="exp.uex.b1">Liderança técnica das equipes de frontend e mobile</li>
+          <li data-i18n="exp.uex.b2">Planejamento estratégico, refinamento de backlog e priorização</li>
+          <li data-i18n="exp.uex.b3">Implementação de padrões de qualidade e otimizações de codebase</li>
         </ul>
         <div class="exp-stack">
           <span class="stack-tag">React Native</span><span class="stack-tag">Flutter</span>
@@ -667,12 +667,12 @@
             <div class="exp-role">Senior Software Engineer</div>
             <div class="exp-company">Gympass (Wellhub)</div>
           </div>
-          <span class="exp-date">Mai 2021 – Mar 2022</span>
+          <span class="exp-date" data-i18n="exp.gym.date">Mai 2021 – Mar 2022</span>
         </div>
         <ul class="exp-bullets">
-          <li>Desenvolvimento de features críticas em escala global</li>
-          <li>Evolução e manutenção do Yoga Design System</li>
-          <li>Condução de entrevistas técnicas para expansão do time</li>
+          <li data-i18n="exp.gym.b1">Desenvolvimento de features críticas em escala global</li>
+          <li data-i18n="exp.gym.b2">Evolução e manutenção do Yoga Design System</li>
+          <li data-i18n="exp.gym.b3">Condução de entrevistas técnicas para expansão do time</li>
         </ul>
         <div class="exp-stack">
           <span class="stack-tag">ReactJS</span><span class="stack-tag">React Native</span>
@@ -688,15 +688,15 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <p class="section-tag reveal">Destaques</p>
-    <h2 class="section-title reveal">Projetos Relevantes</h2>
-    <p class="section-sub reveal">Produtos e sistemas que deixaram marca técnica e de negócio.</p>
+    <p class="section-tag reveal" data-i18n="proj.tag">Destaques</p>
+    <h2 class="section-title reveal" data-i18n="proj.title">Projetos Relevantes</h2>
+    <p class="section-sub reveal" data-i18n="proj.sub">Produtos e sistemas que deixaram marca técnica e de negócio.</p>
     <div class="projects-grid">
 
       <div class="project-card reveal">
         <div class="project-icon">🧘</div>
         <div class="project-name">Yoga Design System</div>
-        <div class="project-desc">Desenvolvimento e padronização do ecossistema de componentes UI centralizado para multi-região no Gympass, unificando a identidade visual de toda a plataforma.</div>
+        <div class="project-desc" data-i18n="proj.yoga.desc">Desenvolvimento e padronização do ecossistema de componentes UI centralizado para multi-região no Gympass, unificando a identidade visual de toda a plataforma.</div>
         <div class="project-stack">
           <span class="tag">React</span><span class="tag">Styled-components</span><span class="tag">TypeScript</span>
         </div>
@@ -704,8 +704,8 @@
 
       <div class="project-card reveal">
         <div class="project-icon">🎮</div>
-        <div class="project-name">Plataforma de Microtransações</div>
-        <div class="project-desc">Layouts Micro-frontend isolados e de alta performance para processamento de pagamentos de alta frequência no Gamers Club.</div>
+        <div class="project-name" data-i18n="proj.micro.name">Plataforma de Microtransações</div>
+        <div class="project-desc" data-i18n="proj.micro.desc">Layouts Micro-frontend isolados e de alta performance para processamento de pagamentos de alta frequência no Gamers Club.</div>
         <div class="project-stack">
           <span class="tag">React.js</span><span class="tag">Module Federation</span><span class="tag">TypeScript</span>
         </div>
@@ -713,8 +713,8 @@
 
       <div class="project-card reveal">
         <div class="project-icon">⏱️</div>
-        <div class="project-name">SaaS de Controle de Jornada</div>
-        <div class="project-desc">Liderança técnica da migração completa do frontend legado de produto crítico B2B para stack moderna, na VR.</div>
+        <div class="project-name" data-i18n="proj.saas.name">SaaS de Controle de Jornada</div>
+        <div class="project-desc" data-i18n="proj.saas.desc">Liderança técnica da migração completa do frontend legado de produto crítico B2B para stack moderna, na VR.</div>
         <div class="project-stack">
           <span class="tag">Angular</span><span class="tag">Ruby on Rails</span><span class="tag">PostgreSQL</span>
         </div>
@@ -727,45 +727,45 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <p class="section-tag reveal">Quem sou</p>
-    <h2 class="section-title reveal">Sobre mim</h2>
+    <p class="section-tag reveal" data-i18n="about.tag">Quem sou</p>
+    <h2 class="section-title reveal" data-i18n="about.title">Sobre mim</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>Sou um engenheiro de software apaixonado por criar produtos digitais que fazem diferença. Com mais de 10 anos de experiência, já passei por startups, scale-ups e produtos globais — sempre com foco em qualidade técnica e resultado de negócio.</p>
-        <p>Meu diferencial está na combinação entre profundidade técnica e visão de produto. Já atuei como Tech Lead e como mão na massa ao mesmo tempo, o que me dá uma perspectiva completa do ciclo de desenvolvimento.</p>
-        <p>Ambiente ideal para mim: remoto, com autonomia técnica real, times que colaboram genuinamente e cultura de confiança mútua. Mais do que o porte da empresa, o que importa é o impacto.</p>
+        <p data-i18n="about.p1">Sou um engenheiro de software apaixonado por criar produtos digitais que fazem diferença. Com mais de 10 anos de experiência, já passei por startups, scale-ups e produtos globais — sempre com foco em qualidade técnica e resultado de negócio.</p>
+        <p data-i18n="about.p2">Meu diferencial está na combinação entre profundidade técnica e visão de produto. Já atuei como Tech Lead e como mão na massa ao mesmo tempo, o que me dá uma perspectiva completa do ciclo de desenvolvimento.</p>
+        <p data-i18n="about.p3">Ambiente ideal para mim: remoto, com autonomia técnica real, times que colaboram genuinamente e cultura de confiança mútua. Mais do que o porte da empresa, o que importa é o impacto.</p>
         <p style="margin-top:20px">
-          <strong style="color:var(--white)">Idiomas:</strong>
-          <span style="color:var(--muted)"> Português nativo · Inglês avançado (B2)</span>
+          <strong style="color:var(--white)" data-i18n="about.langs.label">Idiomas:</strong>
+          <span style="color:var(--muted)" data-i18n="about.langs.value"> Português nativo · Inglês avançado (B2)</span>
         </p>
       </div>
       <div class="about-highlights reveal">
         <div class="highlight-item">
           <span class="highlight-emoji">🎓</span>
           <div>
-            <div class="highlight-title">Pós-Grad. Eng. de Software com IA Aplicada</div>
-            <div class="highlight-desc">Anhanguera Educacional · Conclusão 2026</div>
+            <div class="highlight-title" data-i18n="about.edu1.title">Pós-Grad. Eng. de Software com IA Aplicada</div>
+            <div class="highlight-desc" data-i18n="about.edu1.desc">Anhanguera Educacional · Conclusão 2026</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="highlight-emoji">📦</span>
           <div>
-            <div class="highlight-title">Pós-Grad. Product Management</div>
-            <div class="highlight-desc">Descomplica · 2023</div>
+            <div class="highlight-title" data-i18n="about.edu2.title">Pós-Grad. Product Management</div>
+            <div class="highlight-desc" data-i18n="about.edu2.desc">Descomplica · 2023</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="highlight-emoji">🎨</span>
           <div>
-            <div class="highlight-title">Pós-Grad. UX | UI</div>
-            <div class="highlight-desc">Faculdade Unyleya · 2020</div>
+            <div class="highlight-title" data-i18n="about.edu3.title">Pós-Grad. UX | UI</div>
+            <div class="highlight-desc" data-i18n="about.edu3.desc">Faculdade Unyleya · 2020</div>
           </div>
         </div>
         <div class="highlight-item">
           <span class="highlight-emoji">💻</span>
           <div>
-            <div class="highlight-title">Bacharelado em Sistemas de Informação</div>
-            <div class="highlight-desc">Fafit · 2013</div>
+            <div class="highlight-title" data-i18n="about.edu4.title">Bacharelado em Sistemas de Informação</div>
+            <div class="highlight-desc" data-i18n="about.edu4.desc">Fafit · 2013</div>
           </div>
         </div>
       </div>
@@ -777,9 +777,9 @@
 <section id="contact">
   <div class="container">
     <div class="contact-card reveal">
-      <p class="section-tag" style="text-align:center">Vamos conversar</p>
-      <h2 class="section-title">Aberto a oportunidades<br>remotas 🚀</h2>
-      <p class="section-sub">Se sua empresa busca um profissional que une profundidade técnica, liderança e visão de produto — entre em contato.</p>
+      <p class="section-tag" style="text-align:center" data-i18n="contact.tag">Vamos conversar</p>
+      <h2 class="section-title" data-i18n="contact.title">Aberto a oportunidades<br>remotas 🚀</h2>
+      <p class="section-sub" data-i18n="contact.sub">Se sua empresa busca um profissional que une profundidade técnica, liderança e visão de produto — entre em contato.</p>
       <div class="contact-links">
         <a href="mailto:guilhermecardoso.info@gmail.com" class="contact-link">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -801,7 +801,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <p>© 2025 Luis Guilherme Cardoso Rosa · Curitiba, PR · Disponível para trabalho remoto</p>
+    <p data-i18n="footer.text">© 2025 Luis Guilherme Cardoso Rosa · Curitiba, PR · Disponível para trabalho remoto</p>
   </div>
 </footer>
 
@@ -832,8 +832,14 @@
   // i18n
   const translations = {
     pt: {
+      // nav
+      'nav.skills': 'Skills',
+      'nav.experience': 'Experiência',
+      'nav.projects': 'Projetos',
+      'nav.about': 'Sobre',
       'nav.cta': 'Contato →',
       'nav.contact': 'Contato',
+      // hero
       'hero.badge': 'Disponível para oportunidades remotas',
       'hero.title': 'Senior Frontend Engineer · Tech Lead · Full Stack',
       'hero.desc': 'Profissional com mais de 10 anos construindo aplicações web de alto impacto, liderando times de engenharia e entregando arquiteturas escaláveis para startups e produtos de alto crescimento.',
@@ -842,10 +848,80 @@
       'hero.stat1': 'Anos de experiência',
       'hero.stat2': 'Empresas & produtos',
       'hero.stat3': 'Tecnologias dominadas',
+      // skills
+      'skills.tag': 'Expertise técnica',
+      'skills.title': 'Stack & Competências',
+      'skills.sub': 'Ecossistema completo — do frontend à arquitetura de sistemas, mobile e backend.',
+      'skills.arch': 'Arquitetura',
+      'skills.data': 'Dados & Ferramentas',
+      'skills.leadership': 'Liderança',
+      'tag.mentoring': 'Mentoria',
+      'tag.planning': 'Planejamento',
+      // experience
+      'exp.tag': 'Trajetória',
+      'exp.title': 'Experiência Profissional',
+      'exp.sub': '10 anos de atuação em startups, scale-ups e produtos digitais de alto crescimento.',
+      'exp.furk.date': 'Mar 2025 – Abr 2026',
+      'exp.furk.b1': 'Liderança da arquitetura e evolução da aplicação principal',
+      'exp.furk.b2': 'Desenvolvimento de serviços backend com ecossistema Java moderno',
+      'exp.furk.b3': 'Definição de padrões de codificação, boas práticas e fluxos de code review',
+      'exp.furk.b4': 'Gestão de estado assíncrono e cache de APIs',
+      'exp.orbia.b1': 'Desenvolvimento e evolução de arquiteturas distribuídas de Micro-frontends',
+      'exp.orbia.b2': 'Otimização de performance de runtime e camada de APIs',
+      'exp.orbia.b3': 'Criação de layouts de UI reutilizáveis e modulares',
+      'exp.arco.date': 'Abr 2023 – Jan 2024',
+      'exp.arco.b1': 'Desenvolvimento de aplicações escaláveis e distribuídas',
+      'exp.arco.b2': 'Construção de camadas BFF e integração de eventos assíncronos',
+      'exp.arco.b3': 'Engenharia de dashboards analíticos para grandes volumes de dados',
+      'exp.uex.date': 'Abr 2022 – Dez 2023',
+      'exp.uex.b1': 'Liderança técnica das equipes de frontend e mobile',
+      'exp.uex.b2': 'Planejamento estratégico, refinamento de backlog e priorização',
+      'exp.uex.b3': 'Implementação de padrões de qualidade e otimizações de codebase',
+      'exp.gym.date': 'Mai 2021 – Mar 2022',
+      'exp.gym.b1': 'Desenvolvimento de features críticas em escala global',
+      'exp.gym.b2': 'Evolução e manutenção do Yoga Design System',
+      'exp.gym.b3': 'Condução de entrevistas técnicas para expansão do time',
+      // projects
+      'proj.tag': 'Destaques',
+      'proj.title': 'Projetos Relevantes',
+      'proj.sub': 'Produtos e sistemas que deixaram marca técnica e de negócio.',
+      'proj.yoga.desc': 'Desenvolvimento e padronização do ecossistema de componentes UI centralizado para multi-região no Gympass, unificando a identidade visual de toda a plataforma.',
+      'proj.micro.name': 'Plataforma de Microtransações',
+      'proj.micro.desc': 'Layouts Micro-frontend isolados e de alta performance para processamento de pagamentos de alta frequência no Gamers Club.',
+      'proj.saas.name': 'SaaS de Controle de Jornada',
+      'proj.saas.desc': 'Liderança técnica da migração completa do frontend legado de produto crítico B2B para stack moderna, na VR.',
+      // about
+      'about.tag': 'Quem sou',
+      'about.title': 'Sobre mim',
+      'about.p1': 'Sou um engenheiro de software apaixonado por criar produtos digitais que fazem diferença. Com mais de 10 anos de experiência, já passei por startups, scale-ups e produtos globais — sempre com foco em qualidade técnica e resultado de negócio.',
+      'about.p2': 'Meu diferencial está na combinação entre profundidade técnica e visão de produto. Já atuei como Tech Lead e como mão na massa ao mesmo tempo, o que me dá uma perspectiva completa do ciclo de desenvolvimento.',
+      'about.p3': 'Ambiente ideal para mim: remoto, com autonomia técnica real, times que colaboram genuinamente e cultura de confiança mútua. Mais do que o porte da empresa, o que importa é o impacto.',
+      'about.langs.label': 'Idiomas:',
+      'about.langs.value': ' Português nativo · Inglês avançado (B2)',
+      'about.edu1.title': 'Pós-Grad. Eng. de Software com IA Aplicada',
+      'about.edu1.desc': 'Anhanguera Educacional · Conclusão 2026',
+      'about.edu2.title': 'Pós-Grad. Product Management',
+      'about.edu2.desc': 'Descomplica · 2023',
+      'about.edu3.title': 'Pós-Grad. UX | UI',
+      'about.edu3.desc': 'Faculdade Unyleya · 2020',
+      'about.edu4.title': 'Bacharelado em Sistemas de Informação',
+      'about.edu4.desc': 'Fafit · 2013',
+      // contact
+      'contact.tag': 'Vamos conversar',
+      'contact.title': 'Aberto a oportunidades<br>remotas 🚀',
+      'contact.sub': 'Se sua empresa busca um profissional que une profundidade técnica, liderança e visão de produto — entre em contato.',
+      // footer
+      'footer.text': '© 2025 Luis Guilherme Cardoso Rosa · Curitiba, PR · Disponível para trabalho remoto',
     },
     en: {
+      // nav
+      'nav.skills': 'Skills',
+      'nav.experience': 'Experience',
+      'nav.projects': 'Projects',
+      'nav.about': 'About',
       'nav.cta': 'Contact →',
       'nav.contact': 'Contact',
+      // hero
       'hero.badge': 'Available for remote opportunities',
       'hero.title': 'Senior Frontend Engineer · Tech Lead · Full Stack',
       'hero.desc': 'Professional with 10+ years building high-impact web applications, leading engineering teams and delivering scalable architectures for startups and high-growth products.',
@@ -854,14 +930,87 @@
       'hero.stat1': 'Years of experience',
       'hero.stat2': 'Companies & products',
       'hero.stat3': 'Technologies mastered',
+      // skills
+      'skills.tag': 'Technical Expertise',
+      'skills.title': 'Stack & Skills',
+      'skills.sub': 'Full ecosystem — from frontend to system architecture, mobile and backend.',
+      'skills.arch': 'Architecture',
+      'skills.data': 'Data & Tools',
+      'skills.leadership': 'Leadership',
+      'tag.mentoring': 'Mentoring',
+      'tag.planning': 'Planning',
+      // experience
+      'exp.tag': 'Career',
+      'exp.title': 'Professional Experience',
+      'exp.sub': '10 years working in startups, scale-ups and high-growth digital products.',
+      'exp.furk.date': 'Mar 2025 – Apr 2026',
+      'exp.furk.b1': 'Led the architecture and evolution of the main application',
+      'exp.furk.b2': 'Developed backend services using the modern Java ecosystem',
+      'exp.furk.b3': 'Defined coding standards, best practices and code review workflows',
+      'exp.furk.b4': 'Managed async state and API caching strategies',
+      'exp.orbia.b1': 'Developed and evolved distributed Micro-frontend architectures',
+      'exp.orbia.b2': 'Optimized runtime performance and API layer',
+      'exp.orbia.b3': 'Built reusable and modular UI layouts',
+      'exp.arco.date': 'Apr 2023 – Jan 2024',
+      'exp.arco.b1': 'Built scalable and distributed applications',
+      'exp.arco.b2': 'Designed BFF layers and integrated async event flows',
+      'exp.arco.b3': 'Engineered analytical dashboards for large data volumes',
+      'exp.uex.date': 'Apr 2022 – Dec 2023',
+      'exp.uex.b1': 'Technical leadership of frontend and mobile teams',
+      'exp.uex.b2': 'Strategic planning, backlog refinement and prioritization',
+      'exp.uex.b3': 'Implemented quality standards and codebase optimizations',
+      'exp.gym.date': 'May 2021 – Mar 2022',
+      'exp.gym.b1': 'Developed critical features at global scale',
+      'exp.gym.b2': 'Evolved and maintained the Yoga Design System',
+      'exp.gym.b3': 'Conducted technical interviews for team expansion',
+      // projects
+      'proj.tag': 'Highlights',
+      'proj.title': 'Relevant Projects',
+      'proj.sub': 'Products and systems that left a technical and business mark.',
+      'proj.yoga.desc': 'Development and standardization of the centralized UI component ecosystem for multi-region at Gympass, unifying the visual identity across the entire platform.',
+      'proj.micro.name': 'Microtransaction Platform',
+      'proj.micro.desc': 'Isolated, high-performance Micro-frontend layouts for high-frequency payment processing at Gamers Club.',
+      'proj.saas.name': 'Work Hours Control SaaS',
+      'proj.saas.desc': 'Technical leadership of the complete migration of a legacy B2B critical product frontend to a modern stack, at VR.',
+      // about
+      'about.tag': 'Who I am',
+      'about.title': 'About me',
+      'about.p1': 'I am a software engineer passionate about creating digital products that make a difference. With over 10 years of experience, I have worked at startups, scale-ups and global products — always focused on technical quality and business outcomes.',
+      'about.p2': 'My edge lies in combining deep technical knowledge with product vision. I have acted as Tech Lead and hands-on engineer simultaneously, giving me a complete perspective of the development lifecycle.',
+      'about.p3': 'My ideal environment: remote, with real technical autonomy, teams that genuinely collaborate and a culture of mutual trust. More than company size, what matters is impact.',
+      'about.langs.label': 'Languages:',
+      'about.langs.value': ' Native Portuguese · Advanced English (B2)',
+      'about.edu1.title': 'Post-Grad. Software Engineering with Applied AI',
+      'about.edu1.desc': 'Anhanguera Educacional · Graduating 2026',
+      'about.edu2.title': 'Post-Grad. Product Management',
+      'about.edu2.desc': 'Descomplica · 2023',
+      'about.edu3.title': 'Post-Grad. UX | UI',
+      'about.edu3.desc': 'Faculdade Unyleya · 2020',
+      'about.edu4.title': 'Bachelor\'s in Information Systems',
+      'about.edu4.desc': 'Fafit · 2013',
+      // contact
+      'contact.tag': 'Let\'s talk',
+      'contact.title': 'Open to remote<br>opportunities 🚀',
+      'contact.sub': 'If your company is looking for someone who combines technical depth, leadership and product vision — reach out.',
+      // footer
+      'footer.text': '© 2025 Luis Guilherme Cardoso Rosa · Curitiba, PR · Available for remote work',
     }
   };
+
+  // Keys whose translation contains HTML tags
+  const htmlKeys = new Set(['contact.title']);
 
   function setLang(lang) {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+      if (translations[lang][key] !== undefined) {
+        if (htmlKeys.has(key)) {
+          el.innerHTML = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
     });
     ['btn-pt', 'btn-en'].forEach(id => {
       const btn = document.getElementById(id);
